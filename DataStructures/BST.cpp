@@ -73,38 +73,7 @@ void traversePostorder(Node* root) {
     }
 }
 
-// Function to find the height of the tree:
-int treeHeight(Node* root) {
-    if (root == nullptr) return 0;
-    return 1 + max(treeHeight(root->left), treeHeight(root->right));
-}
 
-// Function to print nodes at a given level:
-void printLevel(Node* root, int level, int indentSpace, bool isLeft) {
-    if (root == nullptr) {
-        cout << string(indentSpace, ' ') << " ";
-        return;
-    }
-    if (level == 1) {
-        cout << string(indentSpace / 2, ' ');
-        cout << root->data;
-        cout << string(indentSpace / 2, ' ');
-    }
-    else if (level > 1) {
-        printLevel(root->left, level - 1, indentSpace / 2, true);
-        printLevel(root->right, level - 1, indentSpace / 2, false);
-    }
-}
-
-// Function to display the tree in a structured format:
-void displayTreePretty(Node* root) {
-    int height = treeHeight(root);
-    int indentSpace = pow(2, height) * 2; // Adjust the indentation based on height
-    for (int i = 1; i <= height; ++i) {
-        printLevel(root, i, indentSpace, true);
-        cout << endl;
-    }
-}
 
 // Function to find inorder successor for deleting a node with two children:
 Node* findSuccessor(Node* root) {
